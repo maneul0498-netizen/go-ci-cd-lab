@@ -15,7 +15,8 @@ func main() {
 			//"message": "¡Hola desde Gin y Render!",
 			//"message": "message changued",
 			//"message": "changuing message again!!",
-			"message": "changuing message again 3!!",
+			//"message": "changuing message again 3!!",
+			"message": "changuing message again 4!!",
 		})
 	})
 
