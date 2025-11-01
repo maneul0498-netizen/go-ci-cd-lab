@@ -30,6 +30,6 @@ jobs:
     steps:
       - name: Trigger Render deploy
         run: |
-          curl -X POST "https://api.render.com/deploy/srv-d4341m6mcj7s73ali050?key=amMYCwps2oE"
+          curl -X POST "$RENDER_DEPLOY_HOOK"
     env:
       RENDER_DEPLOY_HOOK: ${{ secrets.RENDER_DEPLOY_HOOK }}
