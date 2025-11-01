@@ -1,5 +1,5 @@
 # Etapa 1: build
-FROM golang:1.22 AS builder
+FROM golang:1.23.2 AS builder
 
 WORKDIR /app
 COPY go.mod ./
