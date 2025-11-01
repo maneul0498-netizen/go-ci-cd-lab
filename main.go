@@ -12,7 +12,8 @@ func main() {
 
 	router.GET("/", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
-			"message": "¡Hola desde Gin y Render!",
+			//"message": "¡Hola desde Gin y Render!",
+			"message": "message changued",
 		})
 	})
 
