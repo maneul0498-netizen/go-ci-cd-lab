@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: gin-lab-service
+    env: docker
+    dockerfilePath: Dockerfile
+    plan: free
+    autoDeploy: true
+    branch: main
+    healthCheckPath: /

@@ -1,33 +1,41 @@
-name: Go CI/CD to Render
+name: CI - Go Gin Lab
 
 on:
   push:
     branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
-  build-test-deploy:
+  test-build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: 🧩 Checkout repository
-      uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: 🧠 Setup Go
-      uses: actions/setup-go@v5
-      with:
-        go-version: '1.23'
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: "1.22"
 
-    - name: 🧱 Install dependencies
-      run: go mod tidy
+      - name: Install dependencies
+        run: go mod tidy
 
-    - name: 🧪 Run tests
-      run: go test ./...
+      - name: Run tests
+        run: go test ./...
 
-    - name: 🏗️ Build binary
-      run: go build -o app .
+      - name: Build binary
+        run: go build -v ./...
 
-    - name: 🚀 Trigger Render Deploy
-      run: |
-        curl -X POST "$RENDER_DEPLOY_HOOK"
-      env:
-        RENDER_DEPLOY_HOOK: ${{ secrets.RENDER_DEPLOY_HOOK }}
+  docker-build:
+    runs-on: ubuntu-latest
+    needs: test-build
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t gin-lab .
+
+      - name: Test container locally
+        run: docker run --rm -d -p 8080:8080 gin-lab
