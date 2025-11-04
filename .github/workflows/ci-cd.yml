@@ -26,10 +26,11 @@ jobs:
   deploy:
     needs: test
     runs-on: ubuntu-latest
-    if: success()  # solo si el test pasó
+    if: ${{ success() }} # ⬅️ solo si el job "test" pasa exitosamente
     steps:
       - name: Trigger Render deploy
         run: |
+          echo "Triggering Render deploy..."
           curl -X POST "$RENDER_DEPLOY_HOOK"
     env:
       RENDER_DEPLOY_HOOK: ${{ secrets.RENDER_DEPLOY_HOOK }}
