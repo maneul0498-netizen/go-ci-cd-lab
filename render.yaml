@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: gin-lab-service
+    name: go-ci-cd-lab
     env: docker
     dockerfilePath: Dockerfile
     plan: free
