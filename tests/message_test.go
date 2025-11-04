@@ -8,7 +8,7 @@ import (
 
 func TestMesage(t *testing.T) {
 	result := saludo.Message("Manuel")
-	if result != "Hola: Manuel!" || true {
+	if result != "Hola: Manuel!" {
 		t.Errorf("Esperaba 'Hola: Manuel!', obtuve '%s'", result)
 	}
 
