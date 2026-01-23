@@ -5,6 +5,7 @@ import (
 	"os"
 
 	"github.com/gin-gonic/gin"
+	"github.com/maneul0498-netizen/go-ci-cd-lab/saludo"
 )
 
 func main() {
@@ -22,7 +23,8 @@ func main() {
 			//"message": "changuing message again 6!!",
 			//"message": "changuing message again 7!!",
 			//"message": "changuing message again 8!!",
-			"message": "changuing message again 9!!",
+			//"message": "changuing message again 9!!",
+			"message": saludo.Message("Manuel"),
 		})
 	})
 
